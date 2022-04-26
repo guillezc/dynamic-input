@@ -9,14 +9,16 @@ const Button = ({ title, onPress }) => (
 
 const styles = StyleSheet.create({
   container: {
+    justifyContent: 'center',
     paddingHorizontal: 12,
-    paddingVertical: 6,
+    height: 40,
     backgroundColor: '#1227E2',
     borderRadius: 20
   },
   title: {
     textAlign: 'center',
-    color: '#FFF'
+    color: '#FFF',
+    fontWeight: 'bold'
   }
 })
 
