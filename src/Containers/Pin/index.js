@@ -1,5 +1,7 @@
 import React, {useState, useCallback, useRef} from 'react';
 import {Alert, View, Text, StyleSheet} from 'react-native';
+
+import SafeWrapper from '../../Components/SafeWrapper';
 import Button from '../../Components/Button';
 import PinComponent from '../../Components/Pin';
 
@@ -99,13 +101,13 @@ const Pin = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeWrapper>
       <View style={styles.content}>
         <Text style={styles.text}>Enter your new Pin</Text>
         <PinComponent data={password} onChangeDigit={handleChangeDigit} />
       </View>
       <Button title="Next" onPress={handleNext} />
-    </View>
+    </SafeWrapper>
   );
 };
 
@@ -114,7 +116,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#eee',
     paddingHorizontal: 5,
-    paddingBottom: 30,
   },
   content: {
     flex: 1,

@@ -8,7 +8,7 @@ import Router from '../../Navigation/Router';
 const App = () => {
   return (
     <SafeAreaProvider >
-      <StatusBar />
+      <StatusBar barStyle='dark-content' />
       <Router />
     </SafeAreaProvider>
   );
