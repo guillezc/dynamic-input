@@ -1,8 +1,9 @@
 import React, {useState, useCallback, useRef} from 'react';
-import {Alert, View, Text, StyleSheet} from 'react-native';
+import {Alert, View, StyleSheet} from 'react-native';
 
 import SafeWrapper from '../../Components/SafeWrapper';
 import Button from '../../Components/Button';
+import Text from '../../Components/Text';
 import PinComponent from '../../Components/Pin';
 
 const mockPassword = {
@@ -103,7 +104,7 @@ const Pin = () => {
   return (
     <SafeWrapper>
       <View style={styles.content}>
-        <Text style={styles.text}>Enter your new Pin</Text>
+        <Text style={styles.text} bold size={18} align='center'>Enter your new Pin</Text>
         <PinComponent data={password} onChangeDigit={handleChangeDigit} />
       </View>
       <Button title="Next" onPress={handleNext} />
@@ -122,10 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontWeight: 'bold',
-    textAlign: 'center',
     marginBottom: 20,
-    color: '#000',
   },
 });
 
