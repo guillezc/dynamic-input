@@ -1,5 +1,6 @@
 import React from 'react';
-import {TextInput, StyleSheet, Keyboard} from 'react-native';
+import {TextInput, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
 
 const PinInput = ({inputRef, value, onChangeText}) => {
   return (
@@ -25,5 +26,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+PinInput.defaultProps = {
+  value: '',
+};
+
+PinInput.propTypes = {
+  inputRef: PropTypes.object,
+  onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string,
+};
+
+export const PinInputProps = {}
 
 export default PinInput;

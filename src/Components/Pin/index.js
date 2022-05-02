@@ -1,18 +1,57 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
+
 import PinInput from '../PinInput';
 
-const Pin = ({data, onChangeDigit}) => {
+const Pin = ({inputs, onChangeDigit}) => {
+  const handleChangeDigit = (value, inputIndex, inputId) => {
+    if (value !== '') {
+      const nextInput = getNextInput(inputIndex);
+      if (nextInput) {
+        nextInput.current.focus();
+      }
+    }
+
+    if (value === '') {
+      const prevInput = getPrevInput(inputIndex);
+      if (prevInput) {
+        prevInput.current.focus();
+      }
+    }
+
+    onChangeDigit(value, inputId);
+  };
+
+  const getNextInput = inputIndex => {
+    const nextInputIndex = parseInt(inputIndex) + 1;
+
+    if (inputs[nextInputIndex]) {
+      return inputs[nextInputIndex].inputRef;
+    }
+
+    return null;
+  };
+
+  const getPrevInput = inputIndex => {
+    const prevInputIndex = parseInt(inputIndex) - 1;
+
+    if (inputs[prevInputIndex]) {
+      return inputs[prevInputIndex].inputRef;
+    }
+
+    return null;
+  };
+
   return (
     <View style={styles.container}>
-      {data.map(input => {
+      {inputs.map((input, index) => {
         return (
           <PinInput
             key={input.id}
             value={input.value}
             inputRef={input.inputRef}
-            onChangeText={value => onChangeDigit(value, input.id)}
+            onChangeText={value => handleChangeDigit(value, index, input.id)}
           />
         );
       })}
@@ -31,11 +70,11 @@ const styles = StyleSheet.create({
 });
 
 Pin.defaultProps = {
-  data: [],
+  inputs: [],
 };
 
 Pin.propTypes = {
-  data: PropTypes.arrayOf(
+  inputs: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       value: PropTypes.string,
