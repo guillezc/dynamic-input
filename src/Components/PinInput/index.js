@@ -1,9 +1,16 @@
 import React from 'react';
-import {TextInput, StyleSheet} from 'react-native';
+import {TextInput, StyleSheet, Keyboard} from 'react-native';
 
 const PinInput = ({inputRef, value, onChangeText}) => {
   return (
-    <TextInput ref={inputRef} style={styles.input} value={value} onChangeText={onChangeText} />
+    <TextInput
+      keyboardType="number-pad"
+      ref={inputRef}
+      style={styles.input}
+      value={value}
+      onChangeText={onChangeText}
+      // onEndEditing={Keyboard.dismiss}
+    />
   );
 };
 

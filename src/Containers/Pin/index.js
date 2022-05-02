@@ -6,45 +6,29 @@ import Button from '../../Components/Button';
 import Text from '../../Components/Text';
 import PinComponent from '../../Components/Pin';
 
-const mockPassword = {
-  cell_1: {id: '1', value: '', inputRef: React.createRef()},
-  cell_2: {id: '2', value: '', inputRef: React.createRef()},
-  cell_3: {id: '3', value: '', inputRef: React.createRef()},
-  cell_4: {id: '4', value: '', inputRef: React.createRef()},
-};
-
-/**
- * @TODO
- * Implement mock as an array to make PinComponent dynamic
- */
-// const mockPassword = [
-//   {id: '1', value: '', inputRef: React.createRef()},
-//   {id: '2',value: '', inputRef: React.createRef()},
-//   {id: '3',value: '', inputRef: React.createRef()},
-//   {id: '4',value: '', inputRef: React.createRef()},
-// ];
+const mockPassword = [
+  {id: 1, value: '', inputRef: React.createRef()},
+  {id: 2, value: '', inputRef: React.createRef()},
+  {id: 3, value: '', inputRef: React.createRef()},
+  {id: 4, value: '', inputRef: React.createRef()},
+];
 
 const Pin = () => {
   const [password, setPassword] = useState(mockPassword);
 
   const handleChangeDigit = useCallback(
-    (value, passwordIndex) => {
-      setPassword({
-        ...password,
-        [passwordIndex]: {
-          ...password[passwordIndex],
-          value,
-        },
+    (value, inputId) => {
+      let passwordIndex;
+      const _password = [...password].map((input, index) => {
+        if (input.id === inputId) {
+          passwordIndex = index;
+          return {...input, value};
+        }
+
+        return input;
       });
 
-      /**
-       * @TODO
-       * Implement setPassword with map to make PinComponent dynamic
-       */
-      // const _password = [...password].map((input, index) => {
-      //   return index === passwordIndex ? { ...input, value } : input
-      // })
-      // setPassword(_password)
+      setPassword(_password);
 
       if (value !== '') {
         const nextInput = getNextInput(passwordIndex);
@@ -63,36 +47,29 @@ const Pin = () => {
     [password],
   );
 
-  getNextInput = passwordKey => {
-    const [_, currentCellIndex] = passwordKey.split('_');
-    const nextCellIndex = parseInt(currentCellIndex) + 1;
+  getNextInput = passwordIndex => {
+    const nextCellIndex = parseInt(passwordIndex) + 1;
 
-    if (password[`cell_${nextCellIndex}`]) {
-      return password[`cell_${nextCellIndex}`].inputRef;
+    if (password[nextCellIndex]) {
+      return password[nextCellIndex].inputRef;
     }
 
     return null;
   };
 
-  getPrevInput = passwordKey => {
-    const [_, currentCellIndex] = passwordKey.split('_');
-    const prevCellIndex = parseInt(currentCellIndex) - 1;
+  getPrevInput = passwordIndex => {
+    const prevCellIndex = parseInt(passwordIndex) - 1;
 
-    if (password[`cell_${prevCellIndex}`]) {
-      return password[`cell_${prevCellIndex}`].inputRef;
+    if (password[prevCellIndex]) {
+      return password[prevCellIndex].inputRef;
     }
 
     return null;
   };
 
   const validate = () => {
-    const {cell_1, cell_2, cell_3, cell_4} = password;
-    return (
-      cell_1.value !== '' &&
-      cell_2.value !== '' &&
-      cell_3.value !== '' &&
-      cell_4.value !== ''
-    );
+    const errors = password.filter(p => p.value === '');
+    return errors.length === 0;
   };
 
   const handleNext = () => {
@@ -104,7 +81,9 @@ const Pin = () => {
   return (
     <SafeWrapper>
       <View style={styles.content}>
-        <Text style={styles.text} bold size={18} align='center'>Enter your new Pin</Text>
+        <Text style={styles.text} bold size={18} align="center">
+          Enter your new Pin
+        </Text>
         <PinComponent data={password} onChangeDigit={handleChangeDigit} />
       </View>
       <Button title="Next" onPress={handleNext} />
