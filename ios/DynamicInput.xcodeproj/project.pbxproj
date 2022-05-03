@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* DynamicInputTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DynamicInputTests.m */; };
+		04BE7A9628189D4600032290 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04BE7A9328189D4600032290 /* Raleway-Regular.ttf */; };
+		04BE7A9728189D4600032290 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04BE7A9428189D4600032290 /* Raleway-Bold.ttf */; };
+		04BE7A9828189D4600032290 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04BE7A9528189D4600032290 /* Raleway-Light.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-DynamicInput.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-DynamicInput.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -30,6 +33,9 @@
 		00E356EE1AD99517003FC87E /* DynamicInputTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicInputTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DynamicInputTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicInputTests.m; sourceTree = "<group>"; };
+		04BE7A9328189D4600032290 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Regular.ttf"; path = "../../src/Assets/Fonts/Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		04BE7A9428189D4600032290 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Bold.ttf"; path = "../../src/Assets/Fonts/Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		04BE7A9528189D4600032290 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Raleway-Light.ttf"; path = "../../src/Assets/Fonts/Raleway-Light.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DynamicInput.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicInput.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DynamicInput/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = DynamicInput/AppDelegate.mm; sourceTree = "<group>"; };
@@ -83,6 +89,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		04BE7A9228189D1700032290 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04BE7A9428189D4600032290 /* Raleway-Bold.ttf */,
+				04BE7A9528189D4600032290 /* Raleway-Light.ttf */,
+				04BE7A9328189D4600032290 /* Raleway-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* DynamicInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +132,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				04BE7A9228189D1700032290 /* Resources */,
 				13B07FAE1A68108700A75B9A /* DynamicInput */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* DynamicInputTests */,
@@ -243,7 +260,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				04BE7A9828189D4600032290 /* Raleway-Light.ttf in Resources */,
+				04BE7A9628189D4600032290 /* Raleway-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				04BE7A9728189D4600032290 /* Raleway-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GC6KS24Q3;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DynamicInput/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -510,6 +531,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GC6KS24Q3;
 				INFOPLIST_FILE = DynamicInput/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
