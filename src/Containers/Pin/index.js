@@ -1,15 +1,18 @@
 import React, {useRef} from 'react';
-import {Alert} from 'react-native';
+import {Alert, ScrollView, StyleSheet} from 'react-native';
 
 import SafeWrapper from '../../Components/SafeWrapper';
+import SectionTitle from '../../Components/SectionTitle';
 import Button from '../../Components/Button';
-import PinPassword from '../../Components/PinPassword';
+import DynamicInputSimple from '../../Components/DynamicInputSimple';
 
-const Pin = ({ navigation }) => {
+import {mockPinInputs} from '../../Mocks/data';
+
+const Pin = ({navigation}) => {
   let password = useRef();
 
-  const handleChange = (newPassword) => {
-    password = newPassword
+  const handleChange = newPassword => {
+    password = newPassword;
   };
 
   const handleNext = () => {
@@ -18,15 +21,25 @@ const Pin = ({ navigation }) => {
       return
     }
 
-    // navigation.navigate('UserInfo')
+    navigation.navigate('UserInfo');
   };
 
   return (
     <SafeWrapper>
-      <PinPassword onChange={handleChange} />
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <SectionTitle text="Enter your new Pin" />
+        <DynamicInputSimple inputs={mockPinInputs} onChange={handleChange} />
+      </ScrollView>
       <Button title="Next" onPress={handleNext} />
     </SafeWrapper>
   );
 };
+
+const styles = StyleSheet.create({
+  scrollContent: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
 
 export default Pin;

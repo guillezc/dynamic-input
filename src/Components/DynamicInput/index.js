@@ -2,11 +2,12 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import PinInput from '../PinInput';
+import TextInput from '../TextInput';
 
-const Pin = ({inputs, onChangeDigit}) => {
+const DynamicInput = ({inputs, onChangeDigit}) => {
   const handleChangeDigit = (value, inputIndex, inputId) => {
-    if (value !== '') {
+    const { digits, mask } = inputs[inputIndex]
+    if (value.length === digits) {
       const nextInput = getNextInput(inputIndex);
       if (nextInput) {
         nextInput.current.focus();
@@ -47,11 +48,14 @@ const Pin = ({inputs, onChangeDigit}) => {
     <View style={styles.container}>
       {inputs.map((input, index) => {
         return (
-          <PinInput
+          <TextInput
             key={input.id}
+            keyboardType={input.keyboardType}
+            maxLength={input.digits}
             value={input.value}
             inputRef={input.inputRef}
             onChangeText={value => handleChangeDigit(value, index, input.id)}
+            validation={input.validation}
           />
         );
       })}
@@ -69,19 +73,21 @@ const styles = StyleSheet.create({
   },
 });
 
-Pin.defaultProps = {
+DynamicInput.defaultProps = {
   inputs: [],
 };
 
-Pin.propTypes = {
+DynamicInput.propTypes = {
   inputs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      value: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      digits: PropTypes.number.isRequired,
+      value: PropTypes.string.isRequired,
       inputRef: PropTypes.object,
+      validation: PropTypes.func,
     }),
   ),
   onChangeDigit: PropTypes.func.isRequired,
 };
 
-export default Pin;
+export default DynamicInput;
