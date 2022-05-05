@@ -2,11 +2,13 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
+import {COLORS} from '../../Theme';
+
 import TextInput from '../TextInput';
 
 const DynamicInput = ({inputs, onChangeDigit}) => {
   const handleChangeDigit = (value, inputIndex, inputId) => {
-    const { digits, mask } = inputs[inputIndex]
+    const {digits, mask} = inputs[inputIndex];
     if (value.length === digits) {
       const nextInput = getNextInput(inputIndex);
       if (nextInput) {
@@ -69,13 +71,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   text: {
-    color: '#000',
+    color: COLORS.primary.text,
   },
 });
 
 DynamicInput.defaultProps = {
   inputs: [],
-  onChangeDigit: () => null
+  onChangeDigit: () => null,
 };
 
 DynamicInput.propTypes = {

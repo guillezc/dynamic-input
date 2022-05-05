@@ -2,7 +2,7 @@ import React from 'react';
 import {TextInput as TextInputRN, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import {COLORS} from '../../Theme'
+import {COLORS} from '../../Theme';
 
 const INPUT_BASE_WIDTH = 50;
 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.primary.input,
     borderRadius: 3,
-    color: '#000',
+    color: COLORS.primary.text,
     textAlign: 'center',
     paddingHorizontal: 10,
   },
