@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
 
 DynamicInput.defaultProps = {
   inputs: [],
+  onChangeDigit: () => null
 };
 
 DynamicInput.propTypes = {
@@ -87,7 +88,7 @@ DynamicInput.propTypes = {
       validation: PropTypes.func,
     }),
   ),
-  onChangeDigit: PropTypes.func.isRequired,
+  onChangeDigit: PropTypes.func,
 };
 
 export default DynamicInput;

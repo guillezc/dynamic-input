@@ -5,7 +5,6 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
-  Dimensions,
 } from 'react-native';
 
 import SafeWrapper from '../../Components/SafeWrapper';
@@ -15,19 +14,16 @@ import DynamicInputSimple from '../../Components/DynamicInputSimple';
 import PinFormGroup from '../../Components/PinFormGroup';
 import TextInput from '../../Components/TextInput';
 
-import {mockPhoneInputs, mockSsnInputs, mockZipInputs} from '../../Mocks/data';
 import {initUserInfoValues} from '../../Mocks/form';
 
-const window = Dimensions.get('window');
-
-const UserInfo = ({navigation}) => {
+const UserInfo = () => {
   let zipCode = useRef();
   let ssn = useRef();
   let phoneNumber = useRef();
   const [form, setForm] = useState(initUserInfoValues);
 
-  const platformBehavior = Platform.OS == 'ios' ? 'position' : 'height';
-  const platformOffset = Platform.OS === 'ios' ? 60 : 0;
+  const platformBehavior = Platform.OS == 'ios' ? 'padding' : 'height';
+  const platformOffset = Platform.OS === 'ios' ? 100 : 0;
 
   const handleChangeText = useCallback(
     (value, field) => {
@@ -120,20 +116,20 @@ const UserInfo = ({navigation}) => {
           </PinFormGroup>
           <PinFormGroup label="ZIP Code">
             <DynamicInputSimple
-              inputs={mockZipInputs}
+              mask="#-#-#-#-#"
               onChange={value => (zipCode = value)}
             />
           </PinFormGroup>
           <SectionTitle text="Personal Info" />
           <PinFormGroup label="SSN">
             <DynamicInputSimple
-              inputs={mockSsnInputs}
+              mask="###-##-####"
               onChange={value => (ssn = value)}
             />
           </PinFormGroup>
           <PinFormGroup label="Phone Number">
             <DynamicInputSimple
-              inputs={mockPhoneInputs}
+              mask="##-##########"
               onChange={value => (phoneNumber = value)}
             />
           </PinFormGroup>
@@ -149,8 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    // flex: 1,
-    // marginBottom: 200
+    paddingBottom: 50
   },
 });
 

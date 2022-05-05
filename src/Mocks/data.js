@@ -1,6 +1,18 @@
 import React from 'react';
 
-const equalTo = (value, toCompare) => value?.length === toCompare
+const equalTo = (value, toCompare) => value?.length === toCompare;
+
+export const generateInputsByMask = mask => {
+  const total = mask.split('-');
+  return total.map((item, index) => ({
+    id: index,
+    value: '',
+    digits: item.length,
+    keyboardType: 'number-pad',
+    inputRef: React.createRef(),
+    validation: v => equalTo(v, item.length),
+  }));
+};
 
 export const mockPinInputs = [
   {
@@ -9,7 +21,7 @@ export const mockPinInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 2,
@@ -17,7 +29,7 @@ export const mockPinInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 3,
@@ -25,7 +37,7 @@ export const mockPinInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 4,
@@ -33,7 +45,7 @@ export const mockPinInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
 ];
 
@@ -44,7 +56,7 @@ export const mockZipInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 2,
@@ -52,7 +64,7 @@ export const mockZipInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 3,
@@ -60,7 +72,7 @@ export const mockZipInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 4,
@@ -68,7 +80,7 @@ export const mockZipInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
   {
     id: 5,
@@ -76,7 +88,7 @@ export const mockZipInputs = [
     digits: 1,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 1),
+    validation: v => equalTo(v, 1),
   },
 ];
 
@@ -87,7 +99,7 @@ export const mockSsnInputs = [
     digits: 3,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 3),
+    validation: v => equalTo(v, 3),
   },
   {
     id: 2,
@@ -95,7 +107,7 @@ export const mockSsnInputs = [
     digits: 2,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 2),
+    validation: v => equalTo(v, 2),
   },
   {
     id: 3,
@@ -103,7 +115,7 @@ export const mockSsnInputs = [
     digits: 4,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 4),
+    validation: v => equalTo(v, 4),
   },
 ];
 
@@ -123,6 +135,6 @@ export const mockPhoneInputs = [
     digits: 10,
     keyboardType: 'number-pad',
     inputRef: React.createRef(),
-    validation: (v) => equalTo(v, 10),
+    validation: v => equalTo(v, 10),
   },
 ];

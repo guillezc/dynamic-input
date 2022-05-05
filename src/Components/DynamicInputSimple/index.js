@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 
 import DynamicInput from '../DynamicInput';
 
+import {generateInputsByMask} from '../../Mocks/data';
+
 const DynamicInputSimple = props => {
-  const {onChange, ...rest} = props;
-  const [inputs, setInputs] = useState(rest.inputs);
+  const {onChange, mask} = props;
+  const _inputs = generateInputsByMask(mask)
+
+  const [inputs, setInputs] = useState(_inputs);
 
   useEffect(() => {
     onChange(getValue());
@@ -32,6 +36,7 @@ const DynamicInputSimple = props => {
 
 DynamicInputSimple.defaultProps = {
   inputs: [],
+  mask: '',
   onChange: data => data,
 };
 
@@ -44,6 +49,7 @@ DynamicInputSimple.propTypes = {
       inputRef: PropTypes.object,
     }),
   ),
+  mask: PropTypes.string,
   onChange: PropTypes.func,
 };
 

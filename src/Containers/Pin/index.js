@@ -6,8 +6,6 @@ import SectionTitle from '../../Components/SectionTitle';
 import Button from '../../Components/Button';
 import DynamicInputSimple from '../../Components/DynamicInputSimple';
 
-import {mockPinInputs} from '../../Mocks/data';
-
 const Pin = ({navigation}) => {
   let password = useRef();
 
@@ -18,7 +16,7 @@ const Pin = ({navigation}) => {
   const handleNext = () => {
     if (password.length !== 4) {
       Alert.alert('Please enter all digits');
-      return
+      return;
     }
 
     navigation.navigate('UserInfo');
@@ -28,7 +26,7 @@ const Pin = ({navigation}) => {
     <SafeWrapper>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <SectionTitle text="Enter your new Pin" />
-        <DynamicInputSimple inputs={mockPinInputs} onChange={handleChange} />
+        <DynamicInputSimple mask="#-#-#-#" onChange={handleChange} />
       </ScrollView>
       <Button title="Next" onPress={handleNext} />
     </SafeWrapper>
