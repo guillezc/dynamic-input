@@ -1,7 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
   Alert,
-  View,
   ScrollView,
   StyleSheet,
   KeyboardAvoidingView,
@@ -20,8 +19,6 @@ import {mockPhoneInputs, mockSsnInputs, mockZipInputs} from '../../Mocks/data';
 import {initUserInfoValues} from '../../Mocks/form';
 
 const window = Dimensions.get('window');
-const bestBehavior = window.height <= 600 ? 'position' : 'padding';
-const verticalOffset = 60;
 
 const UserInfo = ({navigation}) => {
   let zipCode = useRef();
@@ -29,8 +26,8 @@ const UserInfo = ({navigation}) => {
   let phoneNumber = useRef();
   const [form, setForm] = useState(initUserInfoValues);
 
-  const platformBehavior = Platform.OS == 'ios' ? bestBehavior : 'height';
-  const platformOffset = Platform.OS === 'ios' ? verticalOffset : 0;
+  const platformBehavior = Platform.OS == 'ios' ? 'position' : 'height';
+  const platformOffset = Platform.OS === 'ios' ? 60 : 0;
 
   const handleChangeText = useCallback(
     (value, field) => {
@@ -55,7 +52,7 @@ const UserInfo = ({navigation}) => {
     if (phoneNumber.length < 12) {
       valid = false;
     }
-    console.log({ zipCode, ssn, phoneNumber})
+
     if (
       form.street.length === 0 ||
       form.city.length === 0 ||
@@ -152,7 +149,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    flex: 1,
+    // flex: 1,
+    // marginBottom: 200
   },
 });
 
